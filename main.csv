@@ -1,0 +1,184 @@
+﻿type,id,name_cn,name_cn,series,manufacturer,body_type,iata,icao,country,hub_icao,level
+model,A320ceo,空客A320ceo,A320 Family,ceo,Airbus,窄体机,A320,A320,,,
+model,A320neo,空客A320neo,A320 Family,neo,Airbus,窄体机,A20N,A20N,,,
+model,A330ceo,空客A330ceo,A330 Family,ceo,Airbus,宽体机,A332,A332,,,
+model,A330neo,空客A330neo,A330 Family,neo,Airbus,宽体机,A339,A339,,,
+model,A350,空客A350,A350 Family,,Airbus,宽体机,A359,A359,,,
+model,B737MAX,波音737MAX,B737 Family,MAX,Boeing,窄体机,7M8,B38M,,,
+model,B737NG,波音737NG,B737 Family,NG,Boeing,窄体机,737,B737,,,
+model,B747,波音747,B747 Family,,Boeing,宽体机,747,B747,,,
+model,B777,波音777,B777 Family,,Boeing,宽体机,777,B777,,,
+model,B787,波音787,B787 Family,,Boeing,宽体机,787,B787,,,
+model,CRJ9,庞巴迪CRJ-900,CRJ Family,900,Bombardier,支线客机,CR9,CRJ9,,,
+model,C909,中国商飞C919（修正）,C919,100,Comac,窄体机,C91,C919,,,
+model,E190,巴西航空工业E190,E-Jet Family,190,Embraer,支线客机,E90,E190,,,
+model,ACJ,空客ACJ公务机,Airbus Corporate Jet Family,,Airbus,公务机,ACJ,ACJ,,,
+model,BBJ,波音BBJ公务机,Boeing Business Jet Family,,Boeing,公务机,BBJ,BBJ,,,
+airline,CSN,中国南方航空,China Southern Airlines,,,,CZ,CSN,China,ZGGG,
+airline,CES,中国东方航空,China Eastern Airlines,,,,MU,CES,China,ZSPD,
+airline,CHH,海南航空,Hainan Airlines,,,,HU,CHH,China,ZJHK,
+airline,CSZ,深圳航空,Shenzhen Airlines,,,,ZH,CSZ,China,ZGSZ,
+airline,CDG,山东航空,Shandong Airlines,,,,SC,CDG,China,ZSJN,
+airline,CXA,厦门航空,Xiamen Airlines,,,,MF,CXA,China,ZSAM,
+airline,CSC,四川航空,Sichuan Airlines,,,,3U,CSC,China,ZUUU,
+airline,FZA,福州航空,Fuzhou Airlines,,,,FU,FZA,China,ZSFZ,
+airline,GCR,天津航空,Tianjin Airlines,,,,GS,GCR,China,ZBTJ,
+airline,LKE,祥鹏航空,Lucky Air,,,,8L,LKE,China,ZPPP,
+airline,CQH,春秋航空,Spring Airlines,,,,9C,CQH,China,ZSSS,
+airline,HBH,河北航空,Hebei Airlines,,,,NS,HBH,China,ZBSJ,
+airline,CBJ,首都航空,Beijing Capital Airlines,,,,JD,CBJ,China,ZBAA,
+airline,DBH,吉祥航空,Juneyao Air,,,,HO,DBH,China,ZSSS,
+airline,UEA,成都航空,Chengdu Airlines,,,,EU,UEA,China,ZUUU,
+airline,CHB,西部航空,West Air,,,,PN,CHB,China,ZUCK,
+airline,YZR,扬子江快运,Yangtze River Airlines,,,,Y8,YZR,China,ZSSS,
+airline,HXA,华夏航空,China Express Airlines,,,,G5,HXA,China,ZUCK,
+airline,CUA,中国联合航空,China United Airlines,,,,KN,CUA,China,ZBAA,
+airline,CJX,江西航空,Jiangxi Air,,,,RY,CJX,China,ZSCN,
+airline,CQN,重庆航空,Chongqing Airlines,,,,OQ,CQN,China,ZUCK,
+airline,RLH,瑞丽航空,Ruili Airlines,,,,DR,RLH,China,ZPMS,
+airline,CUH,乌鲁木齐航空,Urumqi Air,,,,UQ,CUH,China,ZWWW,
+airline,CGN,长安航空,Air Changan,,,,9H,CGN,China,ZLXY,
+airline,CDC,浙江长龙航空,Loong Air,,,,GJ,CDC,China,ZSHC,
+airline,SNG,龙江航空,Longjiang Airlines,,,,LT,SNG,China,ZYHB,
+airline,EPA,东海航空,Donghai Airlines,,,,DZ,EPA,China,ZGSZ,
+airline,CGZ,多彩贵州航空,Colorful Guizhou Airlines,,,,GY,CGZ,China,ZUGY,
+airline,CGH,桂林航空,Air Guilin,,,,GT,CGH,China,ZGKL,
+airline,CCD,大连航空,Dalian Airlines,,,,CN,CCD,China,ZYTL,
+airline,QDA,青岛航空,Qingdao Airlines,,,,QW,QDA,China,ZSQD,
+airline,OTC,湖南航空,Air Travel,,,,A6,OTC,China,ZPDQ,
+airline,TBA,西藏航空,Tibet Airlines,,,,TV,TBA,China,ZULS,
+airline,CYH,云南航空,Yunnan Airlines,,,,3Q,CYH,China,ZPPP,
+airline,CSH,上海航空,Shanghai Airlines,,,,FM,CSH,China,ZSSS,
+airline,CBG,北部湾航空,Guangxi Beibu Gulf Airlines,,,,GX,CBG,China,ZGNN,
+airline,CCA,中国国际航空,Air China,,,,CA,CCA,China,ZBAA,
+airline,OKA,奥凯航空,Okay Airways,,,,BK,OKA,China,ZBTJ,
+airline,JYH,九元航空,9 Air,,,,AQ,JYH,China,ZGGG,
+airline,AAL,美国航空,American Airlines,,,,AA,AAL,United States,KDFW,
+airline,DAL,达美航空,Delta Air Lines,,,,DL,DAL,United States,KATL,
+airline,UAL,联合航空,United Airlines,,,,UA,UAL,United States,KORD,
+airline,DLH,汉莎航空,Lufthansa,,,,LH,DLH,Germany,EDDF,
+airline,BAW,英国航空,British Airways,,,,BA,BAW,United Kingdom,EGLL,
+airline,AFR,法国航空,Air France,,,,AF,AFR,France,LFPG,
+airline,KLM,荷兰皇家航空,KLM Royal Dutch Airlines,,,,KL,KLM,Netherlands,EHAM,
+airline,UAE,阿联酋航空,Emirates,,,,EK,UAE,United Arab Emirates,OMDB,
+airline,QTR,卡塔尔航空,Qatar Airways,,,,QR,QTR,Qatar,OTBD,
+airline,SIA,新加坡航空,Singapore Airlines,,,,SQ,SIA,Singapore,WSSS,
+airline,CPA,国泰航空,Cathay Pacific,,,,CX,CPA,Hong Kong China,VHHH,
+airline,JAL,日本航空,Japan Airlines,,,,JL,JAL,Japan,RJTT,
+airline,ANA,全日空,All Nippon Airways,,,,NH,ANA,Japan,RJAA,
+airline,KAL,大韩航空,Korean Air,,,,KE,KAL,South Korea,RKSI,
+airline,AAR,韩亚航空,Asiana Airlines,,,,OZ,AAR,South Korea,RKSI,
+airline,THA,泰国国际航空,Thai Airways International,,,,TG,THA,Thailand,VTBS,
+airline,QFA,澳洲航空,Qantas,,,,QF,QFA,Australia,YSSY,
+airline,ACA,加拿大航空,Air Canada,,,,AC,ACA,Canada,CYYZ,
+airline,ETH,埃塞俄比亚航空,Ethiopian Airlines,,,,ET,ETH,Ethiopia,HAAB,
+airline,ETD,阿提哈德航空,Etihad Airways,,,,EY,ETD,United Arab Emirates,OMAA,
+airline,ELY,以色列航空,El Al Israel Airlines,,,,LY,ELY,Israel,LLBG,
+airline,SVA,沙特阿拉伯航空,Saudi Arabian Airlines,,,,SV,SVA,Saudi Arabia,OEJN,
+airline,LAN,南美航空,LATAM Airlines,,,,LA,LAN,Chile,SCEL,
+airline,IBE,西班牙国家航空,Iberia,,,,IB,IBE,Spain,LEMD,
+airline,FIN,芬兰航空,Finnair,,,,AY,FIN,Finland,EFHK,
+airline,AUA,奥地利航空,Austrian Airlines,,,,OS,AUA,Austria,LOWW,
+airline,SWR,瑞士国际航空,Swiss International Air Lines,,,,LX,SWR,Switzerland,LSZH,
+airline,SAS,北欧航空,SAS Scandinavian Airlines,,,,SK,SAS,Sweden,ESSA,
+airline,THY,土耳其航空,Turkish Airlines,,,,TK,THY,Turkey,LTBA,
+airline,AFL,俄罗斯航空,Aeroflot,,,,SU,AFL,Russia,UUEE,
+airline,EVA,长荣航空,EVA Air,,,,BR,EVA,Taiwan,RCTP,
+airline,CAL,中华航空,China Airlines,,,,CI,CAL,Taiwan,RCTP,
+airline,GIA,印尼鹰航,Garuda Indonesia,,,,GA,GIA,Indonesia,WIII,
+airline,MAS,马来西亚航空,Malaysia Airlines,,,,MH,MAS,Malaysia,WMKK,
+airline,PAL,菲律宾航空,Philippine Airlines,,,,PR,PAL,Philippines,RPLL,
+airline,HVN,越南航空,Vietnam Airlines,,,,VN,HVN,Vietnam,VVNB,
+airline,MSR,埃及航空,EgyptAir,,,,MS,MSR,Egypt,HECA,
+airline,SAA,南非航空,South African Airways,,,,SA,SAA,South Africa,FAJS,
+airline,ARG,阿根廷航空,Aerolineas Argentinas,,,,AR,ARG,Argentina,SABE,
+airline,CMP,巴拿马航空,Copa Airlines,,,,CM,CMP,Panama,MPTO,
+airline,AVA,哥伦比亚航空,Avianca,,,,AV,AVA,Colombia,SKBO,
+airline,AMX,墨西哥航空,Aeromexico,,,,AM,AMX,Mexico,MMMX,
+airline,TAI,中美洲航空,TACA Airlines,,,,TA,TAI,El Salvador,MSLP,
+airline,SWA,西南航空,Southwest Airlines,,,,WN,SWA,United States,KDAL,
+airline,JBU,捷蓝航空,JetBlue Airways,,,,B6,JBU,United States,KJFK,
+airline,ASA,阿拉斯加航空,Alaska Airlines,,,,AS,ASA,United States,PANC,
+airline,FFT,边疆航空,Frontier Airlines,,,,F9,FFT,United States,KDEN,
+airline,NKS,精神航空,Spirit Airlines,,,,NK,NKS,United States,KFLL,
+airline,AAY,忠实航空,Allegiant Air,,,,G4,AAY,United States,KLAS,
+airline,SCX,太阳之国航空,Sun Country Airlines,,,,SY,SCX,United States,KMSP,
+airline,HAL,夏威夷航空,Hawaiian Airlines,,,,HA,HAL,United States,PHNL,
+airline,NAX,挪威航空,Norwegian Air Shuttle,,,,DY,NAX,Norway,ENGM,
+airline,RYR,瑞安航空,Ryanair,,,,FR,RYR,Ireland,EIDW,
+airline,EZY,易捷航空,EasyJet,,,,U2,EZY,United Kingdom,EGGW,
+airline,WZZ,威兹航空,Wizz Air,,,,W6,WZZ,Hungary,LHBP,
+airline,VLG,伏林航空,Vueling Airlines,,,,VY,VLG,Spain,LEBL,
+airline,TAP,葡萄牙航空,TAP Air Portugal,,,,TP,TAP,Portugal,LPPT,
+airline,BEL,布鲁塞尔航空,Brussels Airlines,,,,SN,BEL,Belgium,EBBR,
+airline,LOT,波兰航空,LOT Polish Airlines,,,,LO,LOT,Poland,EPWA,
+airline,CSA,捷克航空,Czech Airlines,,,,OK,CSA,Czech Republic,LKPR,
+airline,CTN,克罗地亚航空,Croatia Airlines,,,,OU,CTN,Croatia,LDZA,
+airline,AEE,爱琴海航空,Aegean Airlines,,,,A3,AEE,Greece,LGAV,
+airline,RJA,约旦皇家航空,Royal Jordanian,,,,RJ,RJA,Jordan,OJAI,
+airline,PIA,巴基斯坦国际航空,Pakistan International Airlines,,,,PK,PIA,Pakistan,OPKC,
+airline,AIC,印度航空,Air India,,,,AI,AIC,India,VIDP,
+airline,SEJ,香料航空,SpiceJet,,,,SG,SEJ,India,VOBL,
+airline,IGO,靛蓝航空,IndiGo,,,,6E,IGO,India,VIDP,
+airline,PGT,飞马航空,Pegasus Airlines,,,,PC,PGT,Turkey,LTBA,
+airline,MEA,中东航空,Middle East Airlines,,,,ME,MEA,Lebanon,OLBA,
+airline,GFA,海湾航空,Gulf Air,,,,GF,GFA,Bahrain,OBBI,
+airline,KAC,科威特航空,Kuwait Airways,,,,KU,KAC,Kuwait,OKBK,
+airline,RWD,卢旺达航空,RwandAir,,,,WB,RWD,Rwanda,HRYR,
+airline,JST,捷星航空,Jetstar Airways,,,,JQ,JST,Australia,YMML,
+airline,VOZ,维珍澳大利亚航空,Virgin Australia,,,,VA,VOZ,Australia,YBBN,
+airline,ANZ,新西兰航空,Air New Zealand,,,,NZ,ANZ,New Zealand,NZAA,
+airline,FJI,斐济航空,Fiji Airways,,,,FJ,FJI,Fiji,NFFN,
+location,ZBAA,北京首都国际机场,Beijing Capital International Airport,,,,PEK,ZBAA,China,,4F
+location,ZBTJ,天津滨海国际机场,Tianjin Binhai International Airport,,,,TSN,ZBTJ,China,,4E
+location,ZGGG,广州白云国际机场,Guangzhou Baiyun International Airport,,,,CAN,ZGGG,China,,4F
+location,ZGHA,长沙黄花国际机场,Changsha Huanghua International Airport,,,,CSX,ZGHA,China,,4F
+location,ZGNN,南宁吴圩国际机场,Nanning Wuxu International Airport,,,,NNG,ZGNN,China,,4E
+location,ZGSZ,深圳宝安国际机场,Shenzhen Bao'an International Airport,,,,SZX,ZGSZ,China,,4F
+location,ZHHH,武汉天河国际机场,Wuhan Tianhe International Airport,,,,WUH,ZHHH,China,,4F
+location,ZJHK,海口美兰国际机场,Haikou Meilan International Airport,,,,HAK,ZJHK,China,,4E
+location,ZJSY,三亚凤凰国际机场,Sanya Phoenix International Airport,,,,SYX,ZJSY,China,,4E
+location,ZLXY,西安咸阳国际机场,Xi'an Xianyang International Airport,,,,XIY,ZLXY,China,,4F
+location,ZPJH,西双版纳嘎洒机场,Xishuangbanna Gasa Airport,,,,JHG,ZPJH,China,,4E
+location,ZPPP,昆明长水国际机场,Kunming Changshui International Airport,,,,KMG,ZPPP,China,,4F
+location,ZSAM,厦门高崎国际机场,Xiamen Gaoqi International Airport,,,,XMN,ZSAM,China,,4E
+location,ZSCN,南昌昌北国际机场,Nanchang Changbei International Airport,,,,KHN,ZSCN,China,,4E
+location,ZSFZ,福州长乐国际机场,Fuzhou Changle International Airport,,,,FOC,ZSFZ,China,,4E
+location,ZSHC,杭州萧山国际机场,Hangzhou Xiaoshan International Airport,,,,HGH,ZSHC,China,,4F
+location,ZSNB,宁波栎社国际机场,Ningbo Lishe International Airport,,,,NGB,ZSNB,China,,4E
+location,ZSNJ,南京禄口国际机场,Nanjing Lukou International Airport,,,,NKG,ZSNJ,China,,4F
+location,ZSPD,上海浦东国际机场,Shanghai Pudong International Airport,,,,PVG,ZSPD,China,,4F
+location,ZSSS,上海虹桥国际机场,Shanghai Hongqiao International Airport,,,,SHA,ZSSS,China,,4F
+location,ZSTX,衢州机场,Quzhou Airport,,,,JUZ,ZSTX,China,,4E
+location,ZSWZ,温州龙湾国际机场,Wenzhou Longwan International Airport,,,,WNZ,ZSWZ,China,,4E
+location,ZSXZ,徐州观音国际机场,Xuzhou Guanyin International Airport,,,,XUZ,ZSXZ,China,,4E
+location,ZUCK,重庆江北国际机场,Chongqing Jiangbei International Airport,,,,CKG,ZUCK,China,,4F
+location,ZUHG,黄山屯溪国际机场,Huangshan Tunxi International Airport,,,,TXN,ZUHG,China,,4E
+location,ZUTF,成都天府国际机场,Chengdu Tianfu International Airport,,,,TFU,ZUTF,China,,4F
+location,ZUUU,成都双流国际机场,Chengdu Shuangliu International Airport,,,,CTU,ZUUU,China,,4F
+location,ZWWW,乌鲁木齐地窝堡国际机场,Urumqi Diwopu International Airport,,,,URC,ZWWW,China,,4E
+location,ZYHB,哈尔滨太平国际机场,Harbin Taiping International Airport,,,,HRB,ZYHB,China,,4E
+location,ZYJL,延吉朝阳川国际机场,Yanji Chaoyangchuan International Airport,,,,YNJ,ZYJL,China,,4E
+location,ZYTL,大连周水子国际机场,Dalian Zhoushuizi International Airport,,,,DLC,ZYTL,China,,4E
+location,ZYTX,沈阳桃仙国际机场,Shenyang Taoxian International Airport,,,,SHE,ZYTX,China,,4E
+location,ZYYJ,延吉机场,Yanji Airport,,,,YNJ,ZYYJ,China,,4E
+location,RJBB,关西国际机场,Kansai International Airport,,,,KIX,RJBB,Japan,,4F
+location,RJTT,东京国际机场（羽田）,Tokyo International Airport (Haneda),,,,HND,RJTT,Japan,,4F
+location,KATL,哈茨菲尔德-杰克逊亚特兰大国际机场,Hartsfield-Jackson Atlanta International Airport,,,,ATL,KATL,United States,,4F
+location,KDFW,达拉斯/沃思堡国际机场,Dallas/Fort Worth International Airport,,,,DFW,KDFW,United States,,4F
+location,KJFK,约翰·F·肯尼迪国际机场,John F. Kennedy International Airport,,,,JFK,KJFK,United States,,4F
+location,KLAX,洛杉矶国际机场,Los Angeles International Airport,,,,LAX,KLAX,United States,,4F
+location,KORD,芝加哥奥黑尔国际机场,Chicago O'Hare International Airport,,,,ORD,KORD,United States,,4F
+location,KSFO,旧金山国际机场,San Francisco International Airport,,,,SFO,KSFO,United States,,4F
+location,CYYZ,多伦多皮尔逊国际机场,Toronto Pearson International Airport,,,,YYZ,CYYZ,Canada,,4F
+location,EGLL,伦敦希思罗机场,London Heathrow Airport,,,,LHR,EGLL,United Kingdom,,4F
+location,LFPG,巴黎夏尔·戴高乐机场,Charles de Gaulle International Airport,,,,CDG,LFPG,France,,4F
+location,EDDF,法兰克福机场,Frankfurt am Main Airport,,,,FRA,EDDF,Germany,,4F
+location,EHAM,阿姆斯特丹史基浦机场,Amsterdam Airport Schiphol,,,,AMS,EHAM,Netherlands,,4F
+location,LEMD,马德里-巴拉哈斯机场,Adolfo Suárez Madrid–Barajas Airport,,,,MAD,LEMD,Spain,,4F
+location,OMDB,迪拜国际机场,Dubai International Airport,,,,DXB,OMDB,United Arab Emirates,,4F
+location,VHHH,香港国际机场,Hong Kong International Airport,,,,HKG,VHHH,China,,4F
+location,WSSS,新加坡樟宜机场,Singapore Changi Airport,,,,SIN,WSSS,Singapore,,4F
+location,RKSI,仁川国际机场,Incheon International Airport,,,,ICN,RKSI,South Korea,,4F
+location,VTBS,素万那普机场,Suvarnabhumi Airport,,,,BKK,VTBS,Thailand,,4F
+location,YSSY,悉尼金斯福德·史密斯机场,Sydney Kingsford Smith Airport,,,,SYD,YSSY,Australia,,4F

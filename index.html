@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.8.0/dist/index.umd.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Photo Archive</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <style>
+        /* ===== 页面整体 ===== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            /* 隐藏默认滚动条 */
+            overflow-y: scroll;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        /* 隐藏Webkit浏览器默认滚动条 */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 32px 48px;
+        }
+
+        /* ===== 标题 ===== */
+        h2 {
+            text-align: center;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            color: #333;
+        }
+
+        /* ===== 搜索区 ===== */
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .search-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .search-input {
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #3399ff;
+            box-shadow: 0 0 0 2px rgba(51,153,255,0.15);
+            outline: none;
+        }
+
+        .tag-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .tag-item {
+            padding: 6px 12px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .tag-item:hover {
+            background: #e0e0e0;
+        }
+
+        .tag-item.selected {
+            background: #3399ff;
+            color: white;
+            border-color: #3399ff;
+        }
+
+        /* ===== 卡片布局 ===== */
+        #cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        /* ===== 卡片样式 ===== */
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 18px 20px 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+        }
+
+        /* 注册号 */
+        .card .registration {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 0.4px;
+        }
+
+        /* 信息区块 */
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .field-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* 轻量辅助文本 */
+        .muted {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* 无结果提示 */
+        .no-results {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            grid-column: 1 / -1;
+            padding: 40px 0;
+        }
+
+        /* 自定义滚动条容器 */
+        .scroll-container {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 12px;
+            height: 100vh;
+            background: #f0f0f0;
+            z-index: 1000;
+        }
+
+        /* 自定义滚动条 */
+        .custom-scrollbar {
+            position: absolute;
+            right: 2px;
+            top: 0;
+            width: 8px;
+            background: #c0c0c0;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .custom-scrollbar:hover {
+            background: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h2>Aviation Photo Archive</h2>
+
+        <div class="search-container">
+            <div class="search-row">
+                <input id="quick-search" class="search-input" placeholder="输入关键词进行搜索，支持空格分隔多个关键词">
+            </div>
+            <div class="search-row">
+                <div class="tag-selector" id="tag-selector">
+                    <!-- 标签将动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <div id="cards-container"></div>
+    </div>
+
+    <!-- 自定义滚动条 -->
+    <div class="scroll-container">
+        <div class="custom-scrollbar" id="custom-scrollbar"></div>
+    </div>
+
+    <script>
+        let tables = {models:{}, airlines:{}, locations:{}};
+        let aircraft = [];
+        let allTags = new Set(); // 存储所有标签
+        let selectedTags = new Set(); // 存储选中的标签
+        let renderTimeout = null; // 防抖计时器
+
+        // 自定义滚动条逻辑
+        function initCustomScrollbar() {
+            const scrollbar = document.getElementById('custom-scrollbar');
+            const scrollContainer = document.querySelector('.scroll-container');
+            let isDragging = false;
+            let startY;
+            let startScrollTop;
+
+            // 更新滚动条位置和高度
+            function updateScrollbar() {
+                const container = document.body;
+                const scrollHeight = container.scrollHeight;
+                const clientHeight = container.clientHeight;
+                const scrollTop = container.scrollTop;
+                
+                // 计算滚动条高度
+                const scrollbarHeight = Math.max((clientHeight / scrollHeight) * 100, 10);
+                scrollbar.style.height = scrollbarHeight + 'vh';
+                
+                // 计算滚动条位置
+                const scrollPercent = scrollTop / (scrollHeight - clientHeight);
+                const scrollbarTop = scrollPercent * (100 - scrollbarHeight);
+                scrollbar.style.top = scrollbarTop + 'vh';
+            }
+
+            // 滚动事件监听
+            document.addEventListener('scroll', updateScrollbar);
+            window.addEventListener('resize', updateScrollbar);
+
+            // 鼠标按下事件
+            scrollbar.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                startY = e.clientY;
+                startScrollTop = document.body.scrollTop;
+                e.preventDefault();
+            });
+
+            // 鼠标移动事件
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaY = e.clientY - startY;
+                const scrollHeight = document.body.scrollHeight;
+                const clientHeight = document.body.clientHeight;
+                const scrollRatio = (scrollHeight - clientHeight) / (100 - parseFloat(scrollbar.style.height));
+                
+                document.body.scrollTop = startScrollTop + deltaY * scrollRatio;
+            });
+
+            // 鼠标释放事件
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            // 点击滚动条轨道
+            scrollContainer.addEventListener('click', function(e) {
+                if (e.target === scrollContainer) {
+                    const rect = scrollContainer.getBoundingClientRect();
+                    const clickY = e.clientY - rect.top;
+                    const scrollHeight = document.body.scrollHeight;
+                    const clientHeight = document.body.clientHeight;
+                    const scrollPercent = clickY / rect.height;
+                    
+                    document.body.scrollTop = scrollPercent * (scrollHeight - clientHeight);
+                }
+            });
+
+            // 初始更新
+            updateScrollbar();
+        }
+
+        function loadCSV(file, callback){
+            fetch(file)
+                .then(r => r.text())
+                .then(t => {
+                    Papa.parse(t, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: res => callback(res.data)
+                    });
+                });
+        }
+
+        loadCSV('main.csv', data => {
+            data.forEach(x => {
+                if (x.type === 'model') tables.models[x.id] = x;
+                if (x.type === 'airline') tables.airlines[x.id] = x;
+                if (x.type === 'location') tables.locations[x.id] = x;
+            });
+
+            loadCSV('data.csv', d => {
+                aircraft = d;
+                
+                // 提取所有标签
+                aircraft.forEach(item => {
+                    if (item.tags) {
+                        const tags = item.tags.split(',').map(tag => tag.trim());
+                        tags.forEach(tag => allTags.add(tag));
+                    }
+                });
+                
+                // 初始渲染
+                renderTagSelector();
+                render();
+                
+                // 初始化自定义滚动条
+                initCustomScrollbar();
+            });
+        });
+
+        // 搜索输入框
+        const quickSearchInput = document.getElementById('quick-search');
+        const tagSelector = document.getElementById('tag-selector');
+
+        // 添加输入监听（带防抖）
+        quickSearchInput.addEventListener('input', () => {
+            clearTimeout(renderTimeout);
+            renderTimeout = setTimeout(render, 150);
+        });
+
+        // 渲染标签选择器
+        function renderTagSelector() {
+            tagSelector.innerHTML = '';
+            
+            // 添加"全部"标签
+            const allTag = document.createElement('div');
+            allTag.className = 'tag-item selected';
+            allTag.textContent = '全部';
+            allTag.addEventListener('click', () => {
+                selectedTags.clear();
+                tagSelector.querySelectorAll('.tag-item').forEach(tag => tag.classList.remove('selected'));
+                allTag.classList.add('selected');
+                render();
+            });
+            tagSelector.appendChild(allTag);
+            
+            // 添加其他标签
+            Array.from(allTags).sort().forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'tag-item';
+                tagElement.textContent = tag;
+                tagElement.addEventListener('click', () => {
+                    // 切换选中状态
+                    if (selectedTags.has(tag)) {
+                        selectedTags.delete(tag);
+                        tagElement.classList.remove('selected');
+                    } else {
+                        selectedTags.add(tag);
+                        tagElement.classList.add('selected');
+                    }
+                    
+                    // 如果选中了其他标签，取消"全部"的选中状态
+                    if (selectedTags.size > 0) {
+                        tagSelector.querySelector('.tag-item:first-child').classList.remove('selected');
+                    } else {
+                        tagSelector.querySelector('.tag-item:first-child').classList.add('selected');
+                    }
+                    
+                    render();
+                });
+                tagSelector.appendChild(tagElement);
+            });
+        }
+
+        function render() {
+            const keywords = quickSearchInput.value.toLowerCase().trim().split(/\s+/).filter(k => k);
+            
+            const container = document.getElementById('cards-container');
+            let cardsHTML = '';
+
+            let hasResults = false;
+
+            aircraft.forEach(r => {
+                const model = tables.models[r.model_id] || {};
+                const airline = tables.airlines[r.airline_id] || {};
+                const location = tables.locations[r.location_id] || {};
+
+                // 准备搜索文本
+                const text = {
+                    registration: (r.registration || '').toLowerCase(),
+                    airline: ((airline.name_cn||'') + ' ' + (airline.iata||'') + ' ' + (airline.icao||'')).toLowerCase(),
+                    model: ((r.model_id||'') + ' ' + (model.series||'') + ' ' + (model.manufacturer||'') + ' ' + (model.body_type||'')).toLowerCase(),
+                    location: ((location.name_cn||'') + ' ' + (location.iata||'') + ' ' + (location.icao||'')).toLowerCase(),
+                    tag: ((r.livery||'') + ' ' + (r.tags||'') + ' ' + (r.remark||'')).toLowerCase()
+                };
+
+                // 组合所有文本用于搜索
+                const combinedText = Object.values(text).join(' ');
+
+                // 中文转拼音函数
+                function chineseToPinyin(text) {
+                    const pinyinMap = {
+                        '北京': 'beijing', '上海': 'shanghai', '广州': 'guangzhou', '深圳': 'shenzhen',
+                        '中国': 'zhongguo', '国际': 'guoji', '航空': 'hangkong', '机场': 'jichang',
+                        // 可以继续添加更多常用词汇的拼音映射
+                    };
+                    
+                    let pinyinText = text;
+                    for (const [chinese, pinyin] of Object.entries(pinyinMap)) {
+                        pinyinText = pinyinText.replace(new RegExp(chinese, 'g'), pinyin);
+                    }
+                    return pinyinText;
+                }
+
+                // 生成拼音版本的搜索文本
+                const pinyinText = chineseToPinyin(combinedText);
+
+                // 关键词匹配：所有关键词都必须在组合文本或拼音文本中出现
+                const keywordMatch = keywords.length === 0 || 
+                    keywords.every(keyword => {
+                        const pinyinKeyword = chineseToPinyin(keyword);
+                        return combinedText.includes(keyword) || pinyinText.includes(pinyinKeyword);
+                    });
+                
+                // 标签匹配：如果选择了标签，则必须至少匹配一个
+                let tagMatch = true;
+                if (selectedTags.size > 0) {
+                    const itemTags = r.tags ? r.tags.split(',').map(t => t.trim().toLowerCase()) : [];
+                    tagMatch = Array.from(selectedTags).some(tag => 
+                        itemTags.includes(tag.toLowerCase())
+                    );
+                }
+
+                if (!keywordMatch || !tagMatch) return;
+
+                hasResults = true;
+
+                cardsHTML += `
+                    <div class="card">
+                        <div class="registration">${r.registration || ''}</div>
+
+                        <div class="field">
+                            <div class="field-title">Model</div>
+                            <div class="field-content">
+                                ${r.model_id || ''} · ${model.manufacturer || ''} · ${model.body_type || ''}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-title">Airline</div>
+                            <div class="field-content">
+                                ${airline.name_cn || ''} <span class="muted">(${airline.iata || ''} / ${airline.icao || ''})</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-title">Location</div>
+                            <div class="field-content">
+                                ${location.name_cn || ''} <span class="muted">(${location.iata || ''} / ${location.icao || ''})</span>
+                            </div>
+                        </div>
+
+                        ${r.livery ? `
+                        <div class="field">
+                            <div class="field-title">Livery</div>
+                            <div class="field-content">${r.livery}</div>
+                        </div>` : ''}
+
+                        ${r.tags ? `
+                        <div class="field">
+                            <div class="field-title">Tags</div>
+                            <div class="field-content">${r.tags}</div>
+                        </div>` : ''}
+
+                        ${r.remark ? `
+                        <div class="field">
+                            <div class="field-title">Remark</div>
+                            <div class="field-content">${r.remark}</div>
+                        </div>` : ''}
+                    </div>
+                `;
+            });
+            
+            // 如果没有结果，显示提示
+            if (!hasResults) {
+                cardsHTML = '<div class="no-results">没有找到匹配的结果</div>';
+            }
+            
+            // 直接替换内容，无过渡效果
+            container.innerHTML = cardsHTML;
+        }
+    </script>
+</body>
+</html>
