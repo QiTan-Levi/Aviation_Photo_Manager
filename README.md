@@ -32,6 +32,7 @@
 - **scan.js**（文档4）：Node.js脚本，扫描指定根目录（如`E:/摄像存档/航空摄影`）下的照片文件夹，解析文件夹结构（格式：`机型/航空公司/注册号_涂装_地点`），并生成data.csv。
 - **server.bat**（文档5）：批处理脚本，自动启动Python HTTP服务器（端口8080），并打开浏览器访问`http://localhost:8080`。
 - **data.csv**（示例数据如EXCEL1）：由scan.js生成的照片数据表，包含字段：id、registration（注册号）、model_id（机型ID）、airline_id（航空公司ID）、location_id（地点ID）、livery（涂装）、tags（标签）、remark（备注）、folder（文件夹路径）。
+- **Required_directory_structure_sample**：你需要根据这个结构来组织你的照片存放，以适应我的JS文件。
 
 ## 快速开始
 
@@ -64,6 +65,7 @@
 
 - 数据生成依赖文件夹命名规范，请确保照片路径符合`机型/航空公司/注册号_涂装_地点`结构。
 - 首次使用需运行`scan.js`生成数据，后续新增照片后需重新运行以更新。
+  run `node scan.js`
 - 本地服务器仅用于测试，生产环境需部署到Web服务器。
 
 ## 技术栈
